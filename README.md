@@ -3,8 +3,8 @@
 Run the following commands to build things
 ```
 stack setup
-stack exec -- ghcjs -O -o sharedBits -generate-base src/Onping/GHCJS/App.hs onping-ghcjs/Main.hs
-stack exec -- ghcjs -O -o specificBits -use-base sharedBits.jsexe/out.base.symbs custom-table-live-vdom/custom-table-export/Main.hs
+stack exec -- ghcjs -O -o sharedBits -generate-base src/Lib.hs dummy/Main.hs
+stack exec -- ghcjs -O -o app1 -use-base sharedBits.jsexe/out.base.symbs app1/Main.hs
 ```
 
 open `app1.html` in a browser.
