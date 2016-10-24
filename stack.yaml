@@ -1,0 +1,16 @@
+resolver: lts-6.14
+
+compiler: ghcjs-0.2.0.9006014_ghc-7.10.3
+compiler-check: match-exact
+setup-info:
+  ghcjs:
+    source:
+      ghcjs-0.2.0.9006014_ghc-7.10.3:
+         url: "http://tolysz.org/ghcjs/lts-6.14-9006014.tar.gz"
+         sha1: "8408f2a00654976feb374075c5f9adecf0cea4c8"
+
+packages:
+- '.'
+
+
+extra-deps: []
