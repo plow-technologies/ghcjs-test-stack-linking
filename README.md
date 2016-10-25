@@ -1,10 +1,14 @@
 # Test GHCJS Linking
 
-Run the following commands to build things
+First inspect `stack.yaml` and change the compiler as necessary. Then run the
+following commands to build things (you need `stack build` to get dependencies).
+
 ```
 stack setup
+stack build
 stack exec -- ghcjs -O -o sharedBits -generate-base src/Lib.hs dummy/Main.hs
 stack exec -- ghcjs -O -o app1 -use-base sharedBits.jsexe/out.base.symbs app1/Main.hs
+stack exec -- ghcjs -O -o app2 -use-base sharedBits.jsexe/out.base.symbs app2/Main.hs
 ```
 
 open `app1.html` in a browser.
@@ -13,21 +17,4 @@ If working correctly you should see a message in the console:
 
 ```
 Hello App1!
-```
-
-current error message:
-
-```
-uncaught exception in Haskell main thread: TypeError: Cannot read property 't' of null
-
-rts.js:8855 TypeError: Cannot read property 't' of null
-    at h$ap_1_0 (rts.js:10892)
-    at h$runThreadSlice (rts.js:9855)
-    at h$runThreadSliceCatch (rts.js:9813)
-    at h$mainLoop (rts.js:9808)
-    at rts.js:3675
-    at runIfPresent (rts.js:3693)
-    at onGlobalMessage (rts.js:3734)
-
-rts.js:10180 Uncaught h$ThreadAbortedError {code: 0}
 ```
